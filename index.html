@@ -1,0 +1,48 @@
+<html>
+    <head>
+            <style>
+                #map {
+                width: 100%;
+                height: 400px;
+                background-color: grey;
+                }
+            </style>
+        <title>
+            My map
+        </title>
+    </head>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDz-12Nes6_xKk83fhQPr3tRuuXUWrXU0o&callback=initMap">
+        </script>
+    <body>
+        <!-- Heading -->
+        <h1>
+        My Google Map
+        </h1> 
+        <!--Map-->
+        <div id="map">
+            <script>
+    function initMap() {
+        var Nottingham = {lat: 52.959173, lng: -1.158047};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10,
+            center: Nottingham
+        });
+        var geocoder = new google.maps.Geocoder();
+        var incident_location = "Sneinton Road, Nottingham, UK";
+
+        geocoder.geocode( { 'address': incident_location }, function(results) {
+            var emoji = 'poop.png';
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location,
+                animation: google.maps.Animation.DROP,
+                icon: emoji
+            });
+
+        });
+    }
+            </script>
+        </div>
+    </body>
+</html>
